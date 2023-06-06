@@ -5,6 +5,9 @@ WORKDIR /app
 COPY requirements.txt /app/
 RUN pip3 install -r requirements.txt
 COPY . /app
+
+# Expose a port to Containers 
 EXPOSE 8080
-#CMD python3 main.py
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+
+# Command to run on server
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "main:app"]
