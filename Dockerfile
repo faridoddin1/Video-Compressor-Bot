@@ -7,4 +7,4 @@ RUN pip3 install -r requirements.txt
 COPY . /app
 EXPOSE 8080
 #CMD python3 main.py
-CMD ["python3", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
